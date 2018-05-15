@@ -14,8 +14,7 @@
           <p class="card-text">{{ product.description }}</p>
           <p>HT : {{ product.price | currency:'EUR':'symbol':'2.2-2':'fr' }}</p>
           <p>TTC : {{ product.price * 1.2 | currency:'EUR':'symbol':'2.2-2':'fr' }}</p>
-          <h5>0</h5>
-          <a href="#" class="btn btn-primary btn-block">Buy</a>
+          <app-counter [product]="product" (incremented)="log($event)"></app-counter>
         </div>
       </div>
     </div>

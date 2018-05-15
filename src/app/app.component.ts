@@ -11,4 +11,9 @@ export class AppComponent {
   title = 'Ecommerce';
   // La liste des produits qui sera parcourue dans le template
   productList: Product[] = PRODUCTS;
+
+  // Appellé uniquement quand le bouton "buy" est cliqué
+  log(event) {
+    console.log(event);
+  }
 }

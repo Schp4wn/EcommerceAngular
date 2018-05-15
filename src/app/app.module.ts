@@ -6,13 +6,15 @@ import { MenuComponent } from './menu/menu.component';
 
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
+import { CounterComponent } from './counter/counter.component';
 
 registerLocaleData(localeFr, 'fr');
 
 @NgModule({
   declarations: [
     AppComponent,
-    MenuComponent
+    MenuComponent,
+    CounterComponent
   ],
   imports: [
     BrowserModule
