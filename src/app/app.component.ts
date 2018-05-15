@@ -9,5 +9,6 @@ import { Product } from './model/product.model';
 })
 export class AppComponent {
   title = 'Ecommerce';
+  // La liste des produits qui sera parcourue dans le template
   productList: Product[] = PRODUCTS;
 }
