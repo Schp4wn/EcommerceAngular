@@ -3,6 +3,8 @@ import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
 
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
+import { AppComponent } from './app/app.component';
+import { MenuComponent } from './app/menu/menu.component';
 
 if (environment.production) {
   enableProdMode();
