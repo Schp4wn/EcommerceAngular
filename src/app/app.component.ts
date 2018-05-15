@@ -11,9 +11,19 @@ export class AppComponent {
   title = 'Ecommerce';
   // La liste des produits qui sera parcourue dans le template
   productList: Product[] = PRODUCTS;
+  cart: Array<any> = [];
 
   // Appellé uniquement quand le bouton "buy" est cliqué
   log(event) {
     console.log(event);
+    var idProduct = event.id;
+
+    for (let element of this.cart) {
+      if (element.id === idProduct) {
+        return;
+      }
+    }
+
+    this.cart.push(event);
   }
 }
