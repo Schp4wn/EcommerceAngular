@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { PRODUCTS } from './mock/product.mock';
+import { Product } from './model/product.model';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
+  title = 'Ecommerce';
+  productList: Product[] = PRODUCTS;
 }
