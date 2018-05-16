@@ -7,6 +7,8 @@ import { Component, Input } from '@angular/core';
 })
 export class MenuComponent {
   @Input() sitename: string;
+  @Input() cart = [];
+  @Input() cartTotal = 0;
   isCollapsed: boolean = false;
 
   toggleCollapseNavbar() {

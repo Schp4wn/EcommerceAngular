@@ -12,9 +12,13 @@ export class AppComponent {
   // La liste des produits qui sera parcourue dans le template
   productList: Product[] = PRODUCTS;
   cart: Array<any> = [];
+  cartTotal = 0;
 
   // Appellé uniquement quand le bouton "buy" est cliqué
   addToCart(event, product) {
+    // Le nombre total de produits dans le panier
+    this.cartTotal++;
+
     // L'élément qu'on ajoutera dans le panier
     let cartItem = {
       product: product,

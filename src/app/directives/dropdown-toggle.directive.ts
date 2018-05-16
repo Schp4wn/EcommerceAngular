@@ -21,13 +21,13 @@ export class DropdownToggleDirective {
     nextElement.classList.toggle('show');
   }
 
-  @HostListener('document:click', ['$event']) closeDropdown(event) {
+  /*@HostListener('document:click', ['$event']) closeDropdown(event) {
     console.log(event.target);
     // Si on clique n'importe où sur la page sauf sur le dropdown, on ferme le dropdown
     if (event.target !== this.elementHTML.nativeElement) {
       let nextElement = this.elementHTML.nativeElement.nextElementSibling;
       nextElement.classList.remove('show');
     }
-  }
+  }*/
 
 }

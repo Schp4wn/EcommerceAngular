@@ -31,12 +31,14 @@
     <ul class="navbar-nav ml-auto">
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" dropdownToggle>
-          &nbsp;&nbsp;&nbsp;Panier (3)
+          &nbsp;&nbsp;&nbsp;Panier ({{ cartTotal }})
         </a>
         <div class="dropdown-menu">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#" *ngFor="let cartItem of cart">
+            {{ cartItem.product.name }}
+            ( {{ cartItem.quantity }} ) :
+            {{ cartItem.product.price * cartItem.quantity | currency:'EUR':'symbol':'2.2-2':'fr' }}
+          </a>
         </div>
       </li>
     </ul>
