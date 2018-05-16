@@ -7,6 +7,7 @@ import { MenuComponent } from './menu/menu.component';
 import { registerLocaleData } from '@angular/common';
 import localeFr from '@angular/common/locales/fr';
 import { CounterComponent } from './counter/counter.component';
+import { DropdownToggleDirective } from './directives/dropdown-toggle.directive';
 
 registerLocaleData(localeFr, 'fr');
 
@@ -14,7 +15,8 @@ registerLocaleData(localeFr, 'fr');
   declarations: [
     AppComponent,
     MenuComponent,
-    CounterComponent
+    CounterComponent,
+    DropdownToggleDirective
   ],
   imports: [
     BrowserModule
