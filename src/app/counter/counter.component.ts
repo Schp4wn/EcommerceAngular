@@ -15,9 +15,9 @@ export class CounterComponent {
     this.value++;
     // On emet un événement à chaque fois que le bouton "buy" est cliqué. Dans l'événement, on envoie des informations comme le produit qui a été acheté et la quantité actuelle de ce produit.
     this.incremented.emit({
-      id: this.product.id,
+      //id: this.product.id,
       quantity: this.value,
-      product: this.product
+      //product: this.product
     });
   }
 }

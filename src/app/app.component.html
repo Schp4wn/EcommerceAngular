@@ -14,7 +14,7 @@
           <p class="card-text">{{ product.description }}</p>
           <p>HT : {{ product.price | currency:'EUR':'symbol':'2.2-2':'fr' }}</p>
           <p>TTC : {{ product.price * 1.2 | currency:'EUR':'symbol':'2.2-2':'fr' }}</p>
-          <app-counter [product]="product" (incremented)="log($event)"></app-counter>
+          <app-counter (incremented)="addToCart($event, product)"></app-counter>
         </div>
       </div>
     </div>
