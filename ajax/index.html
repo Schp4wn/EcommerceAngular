@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        
+        var toto = 'Ma variable';
+
+        function hello(argument) {
+            return 'Hello ' + argument;
+        }
+
+        console.log(hello('matthieu'));
+
+        /*
+
+        var xhr = new XMLHttpRequest(); // Navigateur du javascript
+
+        xhr.onreadystatechange = function () {
+            if (4 === xhr.readyState) {
+                var users = JSON.parse(xhr.response);
+                console.log(users);
+                for (user of users) {
+                    console.log(user.name);
+                    document.write(user.name);
+                }
+            }
+        }
+
+        xhr.open('GET', 'https://jsonplaceholder.typicode.com/users'); // On ouvre l'url sur le navigateur
+
+        xhr.send(); // On appuye sur entrée
+
+        */
+
+        // En jQuery par exemple
+        /*$.ajax('https://jsonplaceholder.typicode.com/users').done(function (response) {
+            console.log(response);
+        });*/
+        
+        // On range notre logique AJAX dans une fonction pour faire une requête ajax plus facilement
+        function get(url, success) {
+            var xhr = new XMLHttpRequest(); // Navigateur du javascript
+
+            xhr.onreadystatechange = function () {
+                if (4 === xhr.readyState) {
+                    success(JSON.parse(xhr.response));
+                }
+            }
+
+            xhr.open('GET', url); // On ouvre l'url sur le navigateur
+
+            xhr.send(); // On appuye sur entrée
+        }
+        
+        // Cela réduit le nombre de lignes de code pour faire une requête mais on est vite limité si on doit imbriquer plusieurs requêtes AJAX
+        get('https://jsonplaceholder.typicode.com/users', function (users) {
+            console.log(users);
+            for (user of users) {
+                get('https://jsonplaceholder.typicode.com/posts?userId='+user.id, function (userPosts) {
+                    console.log(userPosts);
+                    get('https://jsonplaceholder.typicode.com/posts?userId='+user.id, function (userPosts) {
+                        get('https://jsonplaceholder.typicode.com/posts?userId='+user.id, function (userPosts) {
+                            get('https://jsonplaceholder.typicode.com/posts?userId='+user.id, function (userPosts) {
+                                get('https://jsonplaceholder.typicode.com/posts?userId='+user.id, function (userPosts) {
+                                    console.log(userPosts);
+                                });
+                            });
+                        });
+                    });
+                });
+            }
+        });
+
+        // Pour palier à ça, on a la promesse
+        function get(url) {
+            return new Promise(function (resolve, reject) {
+                var xhr = new XMLHttpRequest(); // Navigateur du javascript
+
+                xhr.onreadystatechange = function () {
+                    if (4 === xhr.readyState) {
+                        if (200 === xhr.status) {
+                            resolve(JSON.parse(xhr.response));
+                        }
+                        reject('Erreur');
+                    }       
+                }
+
+                xhr.open('GET', url); // On ouvre l'url sur le navigateur
+
+                xhr.send(); // On appuye sur entrée
+            });
+        }
+
+        get('https://jsonplaceholder.typicode.com/users').then(function (users) {
+            console.log(users);
+            return get('https://jsonplaceholder.typicode.com/posts?userId='+users[0].id);
+        }).then(function (userPost) {
+            console.log(userPost);
+            return get('nimporteou');
+        }).then(function (response) {
+            console.log(response);
+        }).catch(function (error) {
+            console.log(error);
+        });
+
+    </script>
+</body>
+</html>
